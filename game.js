@@ -6,9 +6,19 @@ let startTime = 0;
 let times = [];
 let misses = 0;
 
+// 画像の読み込み
+const targetImage = document.getElementById('target-image');
+const ballImage = new Image();
+ballImage.src = 'assets/target.PNG';
+ballImage.onload = () => {
+    console.log('Target image loaded successfully');
+};
+ballImage.onerror = (e) => {
+    console.error('Error loading target image:', e);
+};
+
 // DOM要素
 const targetArea = document.getElementById('target-area');
-const targetImage = document.getElementById('target-image');
 const startButton = document.getElementById('startButton');
 const resetButton = document.getElementById('resetButton');
 const bestTimeDisplay = document.getElementById('best-time');
@@ -38,6 +48,7 @@ function setRandomPosition() {
 function showTarget() {
     setRandomPosition();
     targetImage.style.display = 'block';
+    targetImage.src = ballImage.src;  // 画像のソースを設定
     startTime = performance.now();
     waitingForClick = true;
 }
