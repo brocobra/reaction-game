@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>動体視力ゲーム</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>動体視力ゲーム</h1>
+        
+        <div class="game-area">
+            <div id="target-area">
+                <img id="target-image" src="assets/target.png" style="display: none;">
+            </div>
+            
+            <div class="stats">
+                <p>最高記録: <span id="best-time">-.---</span> 秒</p>
+                <p>前回の記録: <span id="last-time">-.---</span> 秒</p>
+                <p>平均記録: <span id="average-time">-.---</span> 秒</p>
+                <p>ミス回数: <span id="misses">0</span> 回</p>
+            </div>
+
+            <div class="controls">
+                <button id="startButton">ゲーム開始</button>
+                <button id="resetButton">リセット</button>
+            </div>
+
+            <div class="instructions">
+                <h2>遊び方</h2>
+                <ol>
+                    <li>「ゲーム開始」を押してゲームを開始します</li>
+                    <li>画面に注目して待ちます（ランダムな時間後に画像が表示されます）</li>
+                    <li>画像が表示されたら、できるだけ早く左クリックしてください</li>
+                    <li>画像が表示される前にクリックすると、ペナルティとしてミス回数が増えます</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>
