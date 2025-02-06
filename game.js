@@ -18,8 +18,9 @@ const missesDisplay = document.getElementById('misses');
 
 // ゲーム設定
 const MIN_WAIT_TIME = 2000;  // 最小待ち時間（ミリ秒）
-const MAX_WAIT_TIME = 7000;  // 最大待ち時間（ミリ秒）
+const MAX_WAIT_TIME = 9000;  // 最大待ち時間（ミリ秒）
 const MAX_TIMES_STORED = 10; // 記録する記録の最大数
+const DECIMAL_PLACES = 3;    // 表示する小数点以下の桁数
 
 // ターゲット画像の位置をランダムに設定
 function setRandomPosition() {
@@ -63,7 +64,7 @@ function resetGame() {
         showTimeout = null;
     }
     targetImage.style.display = 'none';
-    startButton.textContent = 'ゲーム開始';
+    startButton.textContent = 'いざ尋常に';
     startButton.disabled = false;
     times = [];
     misses = 0;
@@ -76,9 +77,9 @@ function updateDisplays() {
     const lastTime = times.length > 0 ? times[times.length - 1] : null;
     const averageTime = times.length > 0 ? times.reduce((a, b) => a + b) / times.length : null;
     
-    bestTimeDisplay.textContent = bestTime ? bestTime.toFixed(3) : '-.---';
-    lastTimeDisplay.textContent = lastTime ? lastTime.toFixed(3) : '-.---';
-    averageTimeDisplay.textContent = averageTime ? averageTime.toFixed(3) : '-.---';
+    bestTimeDisplay.textContent = bestTime ? bestTime.toFixed(DECIMAL_PLACES) : '-.---';
+    lastTimeDisplay.textContent = lastTime ? lastTime.toFixed(DECIMAL_PLACES) : '-.---';
+    averageTimeDisplay.textContent = averageTime ? averageTime.toFixed(DECIMAL_PLACES) : '-.---';
     missesDisplay.textContent = misses;
 }
 
@@ -97,7 +98,7 @@ targetArea.addEventListener('click', () => {
         targetImage.style.display = 'none';
         waitingForClick = false;
         gameActive = false;
-        startButton.textContent = 'ゲーム開始';
+        startButton.textContent = 'いざ尋常に';
         startButton.disabled = false;
         
         updateDisplays();
@@ -110,7 +111,7 @@ targetArea.addEventListener('click', () => {
         }
         
         gameActive = false;
-        startButton.textContent = 'ゲーム開始';
+        startButton.textContent = 'いざ尋常に';
         startButton.disabled = false;
         
         updateDisplays();
